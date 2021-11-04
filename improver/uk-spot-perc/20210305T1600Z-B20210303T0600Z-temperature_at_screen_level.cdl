@@ -1,0 +1,63 @@
+netcdf \20210305T1600Z-B20210303T0600Z-temperature_at_screen_level {
+dimensions:
+	percentile = 13 ;
+	spot_index = 12973 ;
+	string5 = 5 ;
+variables:
+	float air_temperature(percentile, spot_index) ;
+		air_temperature:least_significant_digit = 2LL ;
+		air_temperature:standard_name = "air_temperature" ;
+		air_temperature:units = "K" ;
+		air_temperature:coordinates = "altitude blend_time forecast_period forecast_reference_time height latitude longitude time wmo_id" ;
+	float percentile(percentile) ;
+		percentile:units = "%" ;
+		percentile:long_name = "percentile" ;
+	int spot_index(spot_index) ;
+		spot_index:units = "1" ;
+		spot_index:long_name = "spot_index" ;
+	float altitude(spot_index) ;
+		altitude:units = "m" ;
+		altitude:standard_name = "altitude" ;
+	int64 blend_time ;
+		blend_time:units = "seconds since 1970-01-01 00:00:00" ;
+		blend_time:long_name = "blend_time" ;
+		blend_time:calendar = "gregorian" ;
+	int forecast_period ;
+		forecast_period:units = "seconds" ;
+		forecast_period:standard_name = "forecast_period" ;
+		forecast_period:deprecation_message = "forecast_period will be removed in future and should not be used" ;
+	int64 forecast_reference_time ;
+		forecast_reference_time:units = "seconds since 1970-01-01 00:00:00" ;
+		forecast_reference_time:standard_name = "forecast_reference_time" ;
+		forecast_reference_time:calendar = "gregorian" ;
+		forecast_reference_time:deprecation_message = "forecast_reference_time will be removed in future and should not be used" ;
+	float height ;
+		height:units = "m" ;
+		height:standard_name = "height" ;
+		height:positive = "up" ;
+	float latitude(spot_index) ;
+		latitude:units = "degrees_north" ;
+		latitude:standard_name = "latitude" ;
+	float longitude(spot_index) ;
+		longitude:units = "degrees_east" ;
+		longitude:standard_name = "longitude" ;
+	int64 time ;
+		time:units = "seconds since 1970-01-01 00:00:00" ;
+		time:standard_name = "time" ;
+		time:calendar = "gregorian" ;
+	char wmo_id(spot_index, string5) ;
+		wmo_id:units = "no_unit" ;
+		wmo_id:long_name = "wmo_id" ;
+
+// global attributes:
+		:institution = "Met Office" ;
+		:mosg__model_configuration = "gl_ens uk_ens" ;
+		:source = "IMPROVER" ;
+		:title = "IMPROVER Multi-Model Blend UK Spot Values" ;
+		:Conventions = "CF-1.5" ;
+data:
+
+ percentile = 5, 10, 15, 20, 30, 40, 50, 60, 70, 80, 85, 90, 95 ;
+
+ time = 1614960000 ;
+}

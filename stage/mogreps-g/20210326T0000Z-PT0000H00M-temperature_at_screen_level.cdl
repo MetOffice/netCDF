@@ -1,0 +1,66 @@
+netcdf \20210326T0000Z-PT0000H00M-temperature_at_screen_level {
+dimensions:
+	realization = 18 ;
+	latitude = 960 ;
+	longitude = 1280 ;
+	bnds = 2 ;
+variables:
+	float air_temperature(realization, latitude, longitude) ;
+		air_temperature:standard_name = "air_temperature" ;
+		air_temperature:units = "K" ;
+		air_temperature:grid_mapping = "latitude_longitude" ;
+		air_temperature:coordinates = "forecast_period forecast_reference_time height time" ;
+	int latitude_longitude ;
+		latitude_longitude:grid_mapping_name = "latitude_longitude" ;
+		latitude_longitude:longitude_of_prime_meridian = 0. ;
+		latitude_longitude:earth_radius = 6371229. ;
+	int realization(realization) ;
+		realization:units = "1" ;
+		realization:standard_name = "realization" ;
+	float latitude(latitude) ;
+		latitude:axis = "Y" ;
+		latitude:bounds = "latitude_bnds" ;
+		latitude:units = "degrees_north" ;
+		latitude:standard_name = "latitude" ;
+	float latitude_bnds(latitude, bnds) ;
+	float longitude(longitude) ;
+		longitude:axis = "X" ;
+		longitude:bounds = "longitude_bnds" ;
+		longitude:units = "degrees_east" ;
+		longitude:standard_name = "longitude" ;
+	float longitude_bnds(longitude, bnds) ;
+	int forecast_period ;
+		forecast_period:units = "seconds" ;
+		forecast_period:standard_name = "forecast_period" ;
+	int64 forecast_reference_time ;
+		forecast_reference_time:units = "seconds since 1970-01-01 00:00:00" ;
+		forecast_reference_time:standard_name = "forecast_reference_time" ;
+		forecast_reference_time:calendar = "gregorian" ;
+	float height ;
+		height:units = "m" ;
+		height:standard_name = "height" ;
+		height:positive = "up" ;
+	int64 time ;
+		time:units = "seconds since 1970-01-01 00:00:00" ;
+		time:standard_name = "time" ;
+		time:calendar = "gregorian" ;
+
+// global attributes:
+		:history = "2021-03-26T05:43:00Z: StaGE Decoupler" ;
+		:institution = "Met Office" ;
+		:least_significant_digit = 2LL ;
+		:mosg__forecast_run_duration = "PT198H" ;
+		:mosg__grid_domain = "global" ;
+		:mosg__grid_type = "standard" ;
+		:mosg__grid_version = "1.6.0" ;
+		:mosg__model_configuration = "gl_ens" ;
+		:source = "Met Office Unified Model" ;
+		:title = "MOGREPS-G Model Forecast on Global 20 km Standard Grid" ;
+		:um_version = "11.5" ;
+		:Conventions = "CF-1.7, UKMO-1.0" ;
+data:
+
+ realization = 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ;
+
+ time = 1616716800 ;
+}

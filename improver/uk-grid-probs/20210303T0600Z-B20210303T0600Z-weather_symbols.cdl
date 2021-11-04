@@ -1,0 +1,61 @@
+netcdf \20210303T0600Z-B20210303T0600Z-weather_symbols {
+dimensions:
+	projection_y_coordinate = 970 ;
+	projection_x_coordinate = 1042 ;
+	bnds = 2 ;
+variables:
+	int weather_code(projection_y_coordinate, projection_x_coordinate) ;
+		weather_code:long_name = "weather_code" ;
+		weather_code:units = "1" ;
+		weather_code:weather_code = 0LL, 1LL, 2LL, 3LL, 4LL, 5LL, 6LL, 7LL, 8LL, 9LL, 10LL, 11LL, 12LL, 13LL, 14LL, 15LL, 16LL, 17LL, 18LL, 19LL, 20LL, 21LL, 22LL, 23LL, 24LL, 25LL, 26LL, 27LL, 28LL, 29LL, 30LL ;
+		weather_code:weather_code_meaning = "Clear_Night Sunny_Day Partly_Cloudy_Night Partly_Cloudy_Day Dust Mist Fog Cloudy Overcast Light_Shower_Night Light_Shower_Day Drizzle Light_Rain Heavy_Shower_Night Heavy_Shower_Day Heavy_Rain Sleet_Shower_Night Sleet_Shower_Day Sleet Hail_Shower_Night Hail_Shower_Day Hail Light_Snow_Shower_Night Light_Snow_Shower_Day Light_Snow Heavy_Snow_Shower_Night Heavy_Snow_Shower_Day Heavy_Snow Thunder_Shower_Night Thunder_Shower_Day Thunder" ;
+		weather_code:grid_mapping = "lambert_azimuthal_equal_area" ;
+		weather_code:coordinates = "blend_time forecast_period forecast_reference_time time" ;
+	int lambert_azimuthal_equal_area ;
+		lambert_azimuthal_equal_area:grid_mapping_name = "lambert_azimuthal_equal_area" ;
+		lambert_azimuthal_equal_area:longitude_of_prime_meridian = 0. ;
+		lambert_azimuthal_equal_area:semi_major_axis = 6378137. ;
+		lambert_azimuthal_equal_area:semi_minor_axis = 6356752.31414036 ;
+		lambert_azimuthal_equal_area:longitude_of_projection_origin = -2.5 ;
+		lambert_azimuthal_equal_area:latitude_of_projection_origin = 54.9 ;
+		lambert_azimuthal_equal_area:false_easting = 0. ;
+		lambert_azimuthal_equal_area:false_northing = 0. ;
+	float projection_y_coordinate(projection_y_coordinate) ;
+		projection_y_coordinate:axis = "Y" ;
+		projection_y_coordinate:bounds = "projection_y_coordinate_bnds" ;
+		projection_y_coordinate:units = "m" ;
+		projection_y_coordinate:standard_name = "projection_y_coordinate" ;
+	float projection_y_coordinate_bnds(projection_y_coordinate, bnds) ;
+	float projection_x_coordinate(projection_x_coordinate) ;
+		projection_x_coordinate:axis = "X" ;
+		projection_x_coordinate:bounds = "projection_x_coordinate_bnds" ;
+		projection_x_coordinate:units = "m" ;
+		projection_x_coordinate:standard_name = "projection_x_coordinate" ;
+	float projection_x_coordinate_bnds(projection_x_coordinate, bnds) ;
+	int64 blend_time ;
+		blend_time:units = "seconds since 1970-01-01 00:00:00" ;
+		blend_time:long_name = "blend_time" ;
+		blend_time:calendar = "gregorian" ;
+	int forecast_period ;
+		forecast_period:units = "seconds" ;
+		forecast_period:standard_name = "forecast_period" ;
+		forecast_period:deprecation_message = "forecast_period will be removed in future and should not be used" ;
+	int64 forecast_reference_time ;
+		forecast_reference_time:units = "seconds since 1970-01-01 00:00:00" ;
+		forecast_reference_time:standard_name = "forecast_reference_time" ;
+		forecast_reference_time:calendar = "gregorian" ;
+		forecast_reference_time:deprecation_message = "forecast_reference_time will be removed in future and should not be used" ;
+	int64 time ;
+		time:units = "seconds since 1970-01-01 00:00:00" ;
+		time:standard_name = "time" ;
+		time:calendar = "gregorian" ;
+
+// global attributes:
+		:institution = "Met Office" ;
+		:source = "IMPROVER" ;
+		:title = "IMPROVER Post-Processed Multi-Model Blend on UK 2 km Standard Grid" ;
+		:Conventions = "CF-1.5" ;
+data:
+
+ time = 1614751200 ;
+}

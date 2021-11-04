@@ -1,0 +1,61 @@
+netcdf \20210326T1000Z-PT0010H00M-precipitation_accumulation-PT01H {
+dimensions:
+	latitude = 1920 ;
+	longitude = 2560 ;
+	bnds = 2 ;
+variables:
+	float lwe_thickness_of_precipitation_amount(latitude, longitude) ;
+		lwe_thickness_of_precipitation_amount:least_significant_digit = 6LL ;
+		lwe_thickness_of_precipitation_amount:standard_name = "lwe_thickness_of_precipitation_amount" ;
+		lwe_thickness_of_precipitation_amount:units = "m" ;
+		lwe_thickness_of_precipitation_amount:cell_methods = "time: sum" ;
+		lwe_thickness_of_precipitation_amount:grid_mapping = "latitude_longitude" ;
+		lwe_thickness_of_precipitation_amount:coordinates = "forecast_period forecast_reference_time time" ;
+	int latitude_longitude ;
+		latitude_longitude:grid_mapping_name = "latitude_longitude" ;
+		latitude_longitude:longitude_of_prime_meridian = 0. ;
+		latitude_longitude:earth_radius = 6371229. ;
+	float latitude(latitude) ;
+		latitude:axis = "Y" ;
+		latitude:bounds = "latitude_bnds" ;
+		latitude:units = "degrees_north" ;
+		latitude:standard_name = "latitude" ;
+	float latitude_bnds(latitude, bnds) ;
+	float longitude(longitude) ;
+		longitude:axis = "X" ;
+		longitude:bounds = "longitude_bnds" ;
+		longitude:units = "degrees_east" ;
+		longitude:standard_name = "longitude" ;
+	float longitude_bnds(longitude, bnds) ;
+	int forecast_period ;
+		forecast_period:bounds = "forecast_period_bnds" ;
+		forecast_period:units = "seconds" ;
+		forecast_period:standard_name = "forecast_period" ;
+	int forecast_period_bnds(bnds) ;
+	int64 forecast_reference_time ;
+		forecast_reference_time:units = "seconds since 1970-01-01 00:00:00" ;
+		forecast_reference_time:standard_name = "forecast_reference_time" ;
+		forecast_reference_time:calendar = "gregorian" ;
+	int64 time ;
+		time:bounds = "time_bnds" ;
+		time:units = "seconds since 1970-01-01 00:00:00" ;
+		time:standard_name = "time" ;
+		time:calendar = "gregorian" ;
+	int64 time_bnds(bnds) ;
+
+// global attributes:
+		:history = "2021-03-26T04:08:41Z: StaGE Decoupler" ;
+		:institution = "Met Office" ;
+		:mosg__forecast_run_duration = "PT168H" ;
+		:mosg__grid_domain = "global" ;
+		:mosg__grid_type = "standard" ;
+		:mosg__grid_version = "1.6.0" ;
+		:mosg__model_configuration = "gl_det" ;
+		:source = "Met Office Unified Model" ;
+		:title = "Global Model Forecast on Global 10 km Standard Grid" ;
+		:um_version = "11.5" ;
+		:Conventions = "CF-1.7, UKMO-1.0" ;
+data:
+
+ time = 1616752800 ;
+}
