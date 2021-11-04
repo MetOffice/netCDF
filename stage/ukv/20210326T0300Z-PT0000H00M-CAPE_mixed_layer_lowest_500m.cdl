@@ -1,0 +1,62 @@
+netcdf \20210326T0300Z-PT0000H00M-CAPE_mixed_layer_lowest_500m {
+dimensions:
+	projection_y_coordinate = 970 ;
+	projection_x_coordinate = 1042 ;
+	bnds = 2 ;
+variables:
+	float atmosphere_convective_available_potential_energy(projection_y_coordinate, projection_x_coordinate) ;
+		atmosphere_convective_available_potential_energy:least_significant_digit = 1LL ;
+		atmosphere_convective_available_potential_energy:standard_name = "atmosphere_convective_available_potential_energy" ;
+		atmosphere_convective_available_potential_energy:long_name = "atmosphere_convective_available_potential_energy_assuming_mixed_layer_parcel_for_lowest_500m" ;
+		atmosphere_convective_available_potential_energy:units = "J kg-1" ;
+		atmosphere_convective_available_potential_energy:grid_mapping = "lambert_azimuthal_equal_area" ;
+		atmosphere_convective_available_potential_energy:coordinates = "forecast_period forecast_reference_time time" ;
+	int lambert_azimuthal_equal_area ;
+		lambert_azimuthal_equal_area:grid_mapping_name = "lambert_azimuthal_equal_area" ;
+		lambert_azimuthal_equal_area:longitude_of_prime_meridian = 0. ;
+		lambert_azimuthal_equal_area:semi_major_axis = 6378137. ;
+		lambert_azimuthal_equal_area:semi_minor_axis = 6356752.31414036 ;
+		lambert_azimuthal_equal_area:longitude_of_projection_origin = -2.5 ;
+		lambert_azimuthal_equal_area:latitude_of_projection_origin = 54.9 ;
+		lambert_azimuthal_equal_area:false_easting = 0. ;
+		lambert_azimuthal_equal_area:false_northing = 0. ;
+	float projection_y_coordinate(projection_y_coordinate) ;
+		projection_y_coordinate:axis = "Y" ;
+		projection_y_coordinate:bounds = "projection_y_coordinate_bnds" ;
+		projection_y_coordinate:units = "m" ;
+		projection_y_coordinate:standard_name = "projection_y_coordinate" ;
+	float projection_y_coordinate_bnds(projection_y_coordinate, bnds) ;
+	float projection_x_coordinate(projection_x_coordinate) ;
+		projection_x_coordinate:axis = "X" ;
+		projection_x_coordinate:bounds = "projection_x_coordinate_bnds" ;
+		projection_x_coordinate:units = "m" ;
+		projection_x_coordinate:standard_name = "projection_x_coordinate" ;
+	float projection_x_coordinate_bnds(projection_x_coordinate, bnds) ;
+	int forecast_period ;
+		forecast_period:units = "seconds" ;
+		forecast_period:standard_name = "forecast_period" ;
+	int64 forecast_reference_time ;
+		forecast_reference_time:units = "seconds since 1970-01-01 00:00:00" ;
+		forecast_reference_time:standard_name = "forecast_reference_time" ;
+		forecast_reference_time:calendar = "gregorian" ;
+	int64 time ;
+		time:units = "seconds since 1970-01-01 00:00:00" ;
+		time:standard_name = "time" ;
+		time:calendar = "gregorian" ;
+
+// global attributes:
+		:history = "2021-03-26T07:34:23Z: StaGE Decoupler" ;
+		:institution = "Met Office" ;
+		:mosg__forecast_run_duration = "PT120H" ;
+		:mosg__grid_domain = "uk_extended" ;
+		:mosg__grid_type = "standard" ;
+		:mosg__grid_version = "1.6.0" ;
+		:mosg__model_configuration = "uk_det" ;
+		:source = "Met Office Unified Model" ;
+		:title = "UKV Model Forecast on UK 2 km Standard Grid" ;
+		:um_version = "11.5" ;
+		:Conventions = "CF-1.7, UKMO-1.0" ;
+data:
+
+ time = 1616727600 ;
+}
