@@ -1,0 +1,23 @@
+== Introduction
+
+This document describes the format of the data files used within the Momentum forecast/climate model system, the scientific desktop analysis environment, and the MASS archive. The note describes the main format of file in use: the UGRID-NetCDF and variations thereof that are used for specific purposes.
+
+=== Layout of this document
+
+This document provides a description of the data formats used within Momentum. Chapter 2 gives a detailed 
+list of  the metadata and data fields that are in use, chapters 3-7 describe in more detail each variant file format 
+and where it is used
+
+=== The UGRID-NetCDF file format
+
+
+From its initiation in 2017, the Next Generation Modelling Systems (NGMS) Programme has introduced fundamental changes in the Met Office weather and climate systems and their underpinning infrastructure, resulting in the delivery of Momentum, the Unified Earth Environment Prediction Framework.
+// Add official link when we have one
+A full description of NGMS is out of scope for this document, but more information can be found in the Programme SharePoint site <<moex>>. The underlying grid and data model changed significantly and consequently this has resulted in changes to file formats. The adoption of a semi-structured cubed-sphere grid and a change to mixed-finite element formulation for the dynamical core motivated the change to an unstructured file format. The specific choice of file format was influenced by several things: the need to support an unstructured data layout that uses indirect addressing, the desire to avoid bespoke file formats, and the capabilities of existing IO frameworks to write and read an appropriate format. The NetCDF file format<<nc>> is well-known in the weather and climate community and to the Met Office as are the CF conventions for metadata to describe weather and climate data<<cf>>. The UGRID conventions<<ugrid>> are an extension to CF and allow for unstructured representations. Within UGRID there are several different options for unstructured representations including 1D, 2D, Layered 3D and fully 3D. Currently the Met Office uses 1D and layered 3D variants of UGRID-NetCDF and these will be described more fully in the sections that follow.
+
+
+
+=== Additions and Changes to the file formats
+
+Occasionally model developments or new data products are made that cannot be supported by the current file formats. When considering how to accommodate any new data products into the file format please consult widely. Any changes you make will have potential downstream impact in other applications including MASS archiving, data analysis and visualisation, post-processing, verification and the operational and product suites.
+// I think it is worthwhile keeping this section, but it needs a point of contact for those who are planning changes. Presumably would be the owner of this document or the owner of the file formats?
