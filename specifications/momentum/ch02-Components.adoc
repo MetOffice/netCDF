@@ -1,0 +1,249 @@
+== List of data set components
+
+// Generic list of metadata and data fields we use for ll file formats. Don't repeat full UGRID conventions, just state what we use and our conventions, and any extensions we use
+
+// Note this is taken from the current output from the NWP suite. This applies some post-processing of metadata and data  to the raw model output
+
+This section lists all variables and attributes that are used in the Momentum UGRID-NetCDF file formats with a brief explanation of what they are used for. Refer to the CF and UGRID conventions for more information.
+
+=== Global Attributes
+
+These are metadata that the model writes as standard and generally not changed.
+
+// Do we need other things in here - e.g. that the output is from the Met Office Momentum model?
+
+....
+description
+interval_write
+title
+Conventions
+....
+
+=== Dimensions
+
+Each NetCDF dataset is characterised by a set of dimensions which contains the full range of sizes and 
+shapes necessary to describe the data of every variable in the dataset. For each 2D mesh present in the dataset there are three dimensions which correspond to the number of nodes, edges and faces on the mesh. 
+
+.Standard Topology dimensions
+....
+nMesh_id_node
+nMesh_id_edge
+nMesh_id_face
+Mesh_id_face_N_nodes
+Mesh_id_edge_N_nodes
+Mesh_id_face_N_edges
+Mesh_id_face_N_faces
+Mesh_id_edge_N_faces
+....
+
+Standard Time Dimensions
+
+Time is represented as an umlimited NetCDF dimension, meaning that new data can be appended easily to that dimension for time-series capability. 
+
+// check unlimited, is this necessary for HDF5 encoded files?
+
+....
+time_instant
+time_centered
+....
+
+// Does this imply time averages will be labelled with the central time? This is I think a departure from um/pp approach. Perhaps a comment would be useful.
+
+Other Miscellaneous Dimensions
+
+There are application-specific dimensions of several kinds. Vertical dimensions (e.g. model levels, pressure levels,
+depth); Non-spatial dimensions (e.g. tiles or pseudo-levels)
+
+Finally, there are some additional dimensions: bnds which contains the number of bounds for a 1D quantity (i.e. 2) and dim1 for the number of bounds for a face (i.e. 4).
+
+// These are named horribly - maybe they could be changed to something more informative?
+
+....
+boundary_layer_type
+bnds
+dim1
+depth
+pressure
+....
+
+=== Mesh and Topology Variables and Attributes
+
+These use standard topology dimensions as defined in section 2.2.
+
+....
+int     Mesh_id
+    Mesh_id:cf_role
+    Mesh_id:topology_dimension
+    Mesh_id:long_name
+    Mesh_id:node_coordinates
+    Mesh_id:edge_coordinates
+    Mesh_id:face_coordinates
+    Mesh_id:face_node_connectivity
+    Mesh_id:edge_node_connectivity
+    Mesh_id:face_edge_connectivity
+    Mesh_id:face_face_connectivity
+    Mesh_id:edge_face_connectivity
+....
+
+....
+float Mesh_id_node_x(nMesh_id_node) 
+    Mesh_id_node_x:units
+    Mesh_id_node_x:standard_name
+    Mesh_id_node_x:long_name
+float Mesh_id_node_y(nMesh_id_node)
+    Mesh_id_node_y:units
+    Mesh_id_node_y:standard_name
+    Mesh_id_node_y:long_name
+float Mesh_id_edge_x(nMesh_id_edge)
+    Mesh_id_edge_x:units
+    Mesh_id_edge_x:standard_name
+    Mesh_id_edge_x:long_name
+float Mesh_id_edge_y(nMesh_id_edge)
+    Mesh_id_edge_y:units
+    Mesh_id_edge_y:standard_name
+    Mesh_id_edge_y:long_name
+float Mesh_id_face_x(nMesh_id_face) 
+    Mesh_id_face_x:units
+    Mesh_id_face_x:standard_name
+    Mesh_id_face_x:long_name
+float Mesh_id_face_y(nMesh_id_face)
+    Mesh_id_face_y:units
+    Mesh_id_face_y:standard_name
+    Mesh_id_face_y:long_name
+int Mesh_id_face_nodes(nMesh_id_face, Mesh_id_face_N_nodes) 
+    Mesh_id_face_nodes:long_name
+    Mesh_id_face_nodes:cf_role
+    Mesh_id_face_nodes:start_index
+int Mesh_id_edge_nodes(nMesh_id_edge, Mesh_id_edge_N_nodes)
+    Mesh_id_edge_nodes:long_name
+    Mesh_id_edge_nodes:cf_role
+    Mesh_id_edge_nodes:start_index
+int Mesh_id_face_edges(nMesh_id_face, Mesh_id_face_N_edges)
+    Mesh_id_face_edges:long_name
+    Mesh_id_face_edges:cf_role
+    Mesh_id_face_edges:start_index
+int Mesh_id_face_links(nMesh_id_face, Mesh_id_face_N_faces)
+    Mesh_id_face_links:long_name
+    Mesh_id_face_links:flag_meanings
+    Mesh_id_face_links:flag_values
+    Mesh_id_face_links:cf_role
+    Mesh_id_face_links:start_index
+int Mesh_id_edge_face_links(nMesh_id_edge, Mesh_id_edge_N_faces) 
+    Mesh_id_edge_face_links:long_name
+    Mesh_id_edge_face_links:comment
+    Mesh_id_edge_face_links:cf_role
+    Mesh_id_edge_face_links:start_index
+....
+
+=== Time Variables and Attributes
+
+// Validity time required?
+
+These use standard time dimensions as defined in section 2.2.
+
+....
+double time_instant(time_instant)
+    time_instant:axis
+    time_instant:units
+    time_instant:standard_name
+    time_instant:long_name
+    time_instant:calendar
+    time_instant:time_origin
+
+int64 forecast_period(time_instant)
+    forecast_period:units
+    forecast_period:standard_name
+
+int64 forecast_reference_time
+    forecast_reference_time:units
+    forecast_reference_time:standard_name
+    forecast_reference_time:calendar
+
+double time_centered(time_centered) ;
+    time_centered:axis
+    time_centered:bounds
+    time_centered:units
+    time_centered:standard_name
+    time_centered:long_name
+    time_centered:calendar
+    time_centered:time_origin
+
+double time_centered_bnds(time_centered, bnds)
+
+int64 forecast_period_0(time_centred)
+    forecast_period_0:bounds
+    forecast_period_0:units
+    forecast_period_0:standard_name
+
+int64 forecast_period_0_bnds(time_centered, bnds)
+....
+// I do not know what this is. If it is standard it should be named more informatively
+
+=== Data Variables and Attributes
+
+These use standard topology and time dimensions as well as miscellaneous dimensions as 
+defined in section 2.2. 
+
+....
+double data_var_surface([time dim], [mesh dim]) ;
+    data_var_surface:long_name
+    data_var_surface:units
+    data_var_surface:interval_operation
+    data_var_surface:online_operation
+    data_var_surface:cell_methods
+    data_var_surface:mesh
+    data_var_surface:location
+    data_var_surface:coordinates
+
+
+type data_var_layer([time dim], [layer dim], [mesh dim]) ;
+    data_var_layer:long_name
+    data_var_layer:units
+    data_var_layer:interval_operation
+    data_var_layer:online_operation
+    data_var_layer:cell_methods
+    data_var_layer:mesh
+    data_var_layer:location
+    data_var_layer:coordinates
+
+type data_var_vector([dim]):
+    data_var_vector:axis
+    data_var_vector:bounds
+    data_var_vector:units
+    data_var_vector:long_name
+    data_var_vector:positive
+
+type data_var_vector_bnds([dim], [dim])
+
+
+type data_var_scalar ;
+    scalar_var:units
+    scalar_var:long_name
+....
+
+
+=== Constants 
+
+// I don't think this is needed as much of it covered my metadata dimensions. Might be needed for any data constants we use?
+
+==== Integer
+==== Real
+==== Level Dependent
+==== Row Dependent
+==== Column Dependent
+
+
+=== ADDITIONAL PARAMETERS
+
+// Is this needed?
+
+This section was formerly known as field-dependent constants.
+The data is stored as a 1D array. There are two dimension values, only the first of these is used. This section is used to store stochastic physics coefficient arrays.
+
+// enumerate list including section numbering, e.g. 2.7.1
+
+. coeffc: spherical harmonic cosine coefficients for SPT scheme. size=stph n2 * (stph n2+1)
+. coeffs: spherical harmonic sine coefficients for SPT scheme. size=stph n2 * (stph n2+1)
+. dpsidtc: 2D version of d(psi)/d(t) COS coeffs in Fourier for SKEB scheme. size=(stph n2-stph n1) * (stph - n2+1)
+. dpsidts: 2D version of d(psi)/d(t) SIN coeffs in Fourier. size=(stph n2-stph n1) * (stph n2+1)
+. rp coef: Array of parameters for RP scheme. size=rp max (currently 25)
