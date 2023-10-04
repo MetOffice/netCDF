@@ -17,6 +17,7 @@ jobs:
         run: |
           echo "dependencies"
       - name: Generate content and commit PR branch
+        if: github.event.repository.fork == false
         run: |
           date > thisdate
           git add thisdate
