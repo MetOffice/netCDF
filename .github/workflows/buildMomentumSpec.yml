@@ -1,0 +1,23 @@
+name: generate-spec
+
+on: pull_request
+
+jobs:
+  build_documents:
+    name: build momentum netCDF document from source
+    runs-on: ubuntu-latest
+    steps:
+    # Check out PR
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: |
+        echo 'sudo apt install'
+    - name: build content #toy content
+      run: |
+        date > thisdate
+    # Upload artifact containing Momentum-netCDF.pdf
+    - name: Upload cf-conventions doc preview
+      uses: actions/upload-artifact@v2
+      with:
+        name: thisdate
+        path: ./
