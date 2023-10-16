@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage[a4paper,includeheadfoot,margin=2.54cm]{geometry}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{newclude}
+\usepackage{lscape}
+\usepackage{enumitem}
+
+\numberwithin{enumi}{section}
+
+% \titlehead{\includegraphics[width=6cm]{images/momentumLogo.png}}
+\title{Momentum File Formats}
+
+\author{Owner: Sam Adams\\Editors: mark Hedley\\version 0.1-draft}
+
+\begin{document}
+
+\maketitle
+
+\include*{ch01-Intro}
+
+\include*{ch02-Components}
+
+\include*{ch03-Diagnostics}
+
+\include*{ch04-DumpFiles}
+
+\include*{ch05-CheckpointRestart}
+
+\include*{ch06-FramesLBC}
+
+\include*{ch07-AncillaryFiles}
+
+
+\bibliographystyle{ieeetr}
+\bibliography{references} 
+
+
+\end{document}

@@ -1,0 +1,28 @@
+\section{Diagnostic Output Files}
+
+% For each file format we use describe the specifics of what it is used for and anything different from conventions
+
+% Some links from LFRic wiki that might be useful to populate this chapter.
+
+% https://code.metoffice.gov.uk/trac/lfric/wiki/LFRic/IO/FileFormat
+
+% https://code.metoffice.gov.uk/trac/lfric/wiki/LFRic/IO/FileFormatRequirements
+
+% https://code.metoffice.gov.uk/trac/lfric/wiki/LFRic/DatesAndTimes 
+
+% https://code.metoffice.gov.uk/trac/lfric/wiki/LFRic/Diagnostics/LFRic/Diagnostics/MetaDataDesign 
+% https://code.metoffice.gov.uk/trac/lfric/wiki/LFRic/Diagnostics/DiagnosticSystem 
+
+
+The diagnostic output uses the 3D layered UGRID representation \cite{ug3d} where fields are represented as a series 
+of 2D unstructured "slices" of data, with each slice representing a vertical layer or pseudo-level. As this is not a full 3D representation, data that has a vertical dimension within a cell is collapsed to a lower-dimensional representation (i.e. the 3D cell volume has been collapsed into a 2D face). Scalar quantities 
+are held on 2D faces (e.g. temperature, pressure) and vector quantities that would naturally be held on
+vertical faces are held on the edges of horizontal faces (e.g. u and v winds).
+
+% Add a diagram?
+
+% Note - that in the NWP suite output, winds are on faces
+% I've seen output with winds also on edges, but the whole vector, not just one cpt as in UM (to allow westerly-southerly representation). Useful if want to get closer to LFRic internal representation but hard to use.
+
+% Add a sample txt output here and /or a link to standard sample data?
+
