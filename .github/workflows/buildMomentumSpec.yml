@@ -11,13 +11,21 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install dependencies
       run: |
-        echo 'sudo apt install'
-    - name: build content #toy content
+          sudo apt update
+          sudo apt -yq install texlive texlive-latex-extra inkscape
+    - name: build content
       run: |
-        date > thisdate
+        export apath=./specifications/momentum
+        export TEX=$apath/Momentum-netCDF
+        TEXINPUTS=$apath/: pdflatex -shell-escape -halt-on-error -interaction=nonstopmode -output-directory=$apath $TEX
+        TEXINPUTS=$apath/: BIBINPUTS=$apath/: bibtex $TEX
+        TEXINPUTS=$apath/: pdflatex -output-directory=$apath -shell-escape $TEX
+        TEXINPUTS=$apath/: pdflatex -output-directory=$apath -shell-escape $TEX
+        cp $TEX.pdf $apath/publish
+        ls -l $apath/publish
     # Upload artifact containing Momentum-netCDF.pdf
     - name: Upload cf-conventions doc preview
       uses: actions/upload-artifact@v2
       with:
-        name: thisdate
-        path: ./
+        name: Momentum-netCDF
+        path: ./specifications/momentum/publish/Momentum-netCDF.pdf
