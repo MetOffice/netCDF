@@ -1,0 +1,78 @@
+netcdf Fields_grid1_C1_T1_202307030000 {
+dimensions:
+	latitude = 50 ;
+	longitude = 70 ;
+	nbounds = 2 ;
+	string23 = 23 ;
+variables:
+	float latitude(latitude) ;
+		latitude:standard_name = "latitude" ;
+		latitude:units = "degrees_north" ;
+		latitude:axis = "Y" ;
+		latitude:valid_min = 53.02476f ;
+		latitude:valid_max = 53.26976f ;
+		latitude:bounds = "latitude_bounds" ;
+	float longitude(longitude) ;
+		longitude:standard_name = "longitude" ;
+		longitude:units = "degrees_east" ;
+		longitude:axis = "X" ;
+		longitude:valid_min = -2.663774f ;
+		longitude:valid_max = -2.318774f ;
+		longitude:bounds = "longitude_bounds" ;
+	float latitude_bounds(latitude, nbounds) ;
+		latitude_bounds:comment = "Bounds" ;
+	float longitude_bounds(longitude, nbounds) ;
+		longitude_bounds:comment = "Bounds" ;
+	int time_0 ;
+		time_0:standard_name = "time" ;
+		time_0:long_name = "time" ;
+		time_0:units = "minutes since 1970-01-01 00:00:00" ;
+		time_0:calendar = "gregorian" ;
+		time_0:bounds = "time_bnds_0" ;
+	int time_bnds_0(nbounds) ;
+		time_bnds_0:long_name = "start_and_end_point" ;
+	int forecast_reference_time ;
+		forecast_reference_time:standard_name = "forecast_reference_time" ;
+		forecast_reference_time:long_name = "forecast_reference_time" ;
+		forecast_reference_time:units = "minutes since 1970-01-01 00:00:00" ;
+		forecast_reference_time:calendar = "gregorian" ;
+	char z_bla(string23) ;
+		z_bla:long_name = "z" ;
+	int latitude_longitude ;
+		latitude_longitude:grid_mapping_name = "latitude_longitude" ;
+		latitude_longitude:longitude_of_prime_meridian = 0.f ;
+		latitude_longitude:earth_radius = 6371229.f ;
+	float TCID50_AIR_CONCENTRATION(latitude, longitude) ;
+		TCID50_AIR_CONCENTRATION:long_name = "TCID50_AIR_CONCENTRATION" ;
+		TCID50_AIR_CONCENTRATION:grid_mapping = "latitude_longitude" ;
+		TCID50_AIR_CONCENTRATION:field_name = "Unnamed Field Req 1" ;
+		TCID50_AIR_CONCENTRATION:units = "TCID50 s / m^3" ;
+		TCID50_AIR_CONCENTRATION:coordinates = "time_0 forecast_reference_time z_bla" ;
+		TCID50_AIR_CONCENTRATION:quantity = "Air Concentration" ;
+		TCID50_AIR_CONCENTRATION:source_or_sourcegroup = "All sources" ;
+		TCID50_AIR_CONCENTRATION:species = "TCID50" ;
+		TCID50_AIR_CONCENTRATION:species_category = "FMD" ;
+		TCID50_AIR_CONCENTRATION:time_av_int_info = "1day 0hr 0min integral" ;
+		TCID50_AIR_CONCENTRATION:vertical_av_int_info = "Boundary layer average" ;
+		TCID50_AIR_CONCENTRATION:horizontal_av_int_info = "No horizontal averaging" ;
+		TCID50_AIR_CONCENTRATION:cell_methods = "time: sum" ;
+
+// global attributes:
+		:title = "Operational - FMD Test" ;
+		:Conventions = "CF-1.8" ;
+		:history = "NAME 13/11/2025 15:39:25.669 UTC" ;
+		:source = "Met Office NAME model" ;
+		:institution = "NA" ;
+		:reference = "https://doi.org/10.1007/978-0-387-68854-1_62" ;
+		:comment = "none" ;
+		:name_version = "NAME III (development version 8.7+)" ;
+		:run_time = "13/11/2025 15:39:25.669 UTC" ;
+		:run_duration = "1day 0hr 0min" ;
+		:met_data = "NWP Flow.UKV_PT1_flow; NWP Flow.UKV_PT2_flow; NWP Flow.UKV_PT3_flow; NWP Flow.UKV_PT4_flow; NWP Flow.UKV_PT5_flow; NWP Flow.UKV_PT6_flow; NWP Flow.UKV_PT7_flow; NWP Flow.UKV_PT8_flow; NWP Flow.UKV_PT9_flow; NWP Flow.UKV_PT10_flow; NWP Flow.UKV_PT11_flow; NWP Flow.UKV_PT12_flow; NWP Flow.UKV_PT13_flow; NWP Flow.UKV_PT14_flow; NWP Flow.UKV_PT15_flow; NWP Flow.UKV_PT16_flow" ;
+		:name_netcdf_out_vers = "0.1" ;
+		:start_of_release = "02/07/2023 00:00 UTC" ;
+		:end_of_release = "03/07/2023 00:00 UTC" ;
+		:source_strength = "72.8545 TCID50/s" ;
+		:release_location = "2.4913W   53.1473N" ;
+		:release_height = "10.000m agl +/- 10.000m" ;
+}
